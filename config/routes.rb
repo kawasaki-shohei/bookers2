@@ -5,5 +5,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions',
   }
-  resources :users, only: [:show]
+  resources :users, only: [:index, :show]
+  resources :books, only: [:index]
 end
