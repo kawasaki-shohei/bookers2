@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
   }
   resources :users, only: [:index, :show, :edit]
-  resources :books, only: [:index, :create, :show]
+  resources :books, except: [:new]
 end
