@@ -17,13 +17,16 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.includes(:user).find(params[:id])
+    @book = Book.find(params[:id])
     @user = @book.user
     @new_book = current_user.books.new
   end
 
   def edit
     @book = Book.find(params[:id])
+    unless @book.user == current_user
+      redirect_to books_path
+    end
   end
 
   def update
