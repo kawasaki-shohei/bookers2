@@ -10,8 +10,9 @@ class BooksController < ApplicationController
     if @new_book.save
       redirect_to book_path(@new_book), notice: "You have created book successfully."
     else
-      flash[:errors] = @new_book.errors.full_messages
-      redirect_to books_path
+      @user = current_user
+      @books = Book.includes(:user).all
+      render :index
     end
   end
 
