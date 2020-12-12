@@ -1,11 +1,11 @@
 <main>
   <p id="notice"><%= notice %></p>
   <div class="container px-5 px-sm-0">
-    <% if @new_book.errors.any? %>
+    <% if flash[:errors].present? %>
       <div id="error_explanation">
-        <h3><%= @new_book.errors.size %> error prohibited this obj from being saved:</h3>
+        <h3><%= flash[:errors].size %> error prohibited this obj from being saved:</h3>
         <ul>
-          <% @new_book.errors.full_messages.each do |message| %>
+          <% flash[:errors].each do |message| %>
             <li><%= message %></li>
           <% end %>
         </ul>
